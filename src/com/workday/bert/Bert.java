@@ -26,7 +26,7 @@ public class Bert {
 			throw new DataFormatException(
 					"Encountered ERL_DIST_HEADER, at the moment parsing of this structure is not implemented");
 		}
-		BertCode code = BertCode.get( ByteArrayUtils.readInt(data, offset++, 1));
+		BertCode code = BertCode.get(ByteArrayUtils.readInt(data, offset++, 1));
 		switch (code) {
 		case ERL_VERSION:
 			return decode(data, offset);
@@ -74,7 +74,6 @@ public class Bert {
 
 	public BertDecimal decodeBigNum(byte[] data, int offset, int len) {
 		BertDecimal obj = new BertDecimal();
-		// int saved = offset;
 		int size = ByteArrayUtils.readInt(data, (int) offset, len);
 		offset = offset + len;
 		obj.setValue(ByteArrayUtils.readLong(data, (int) offset, size));
